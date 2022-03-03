@@ -17,27 +17,52 @@ public class Ejercicio3 {
      * SOLA VEZ, cada una de las plataformas que aparecen en el fichero .csv
      */
     public static ArrayList<String> informacionVideojuegos(String ruta) {
+        int lineas = 0;
         File file = new File(ruta);
         ArrayList<String> consolas = new ArrayList<String>();
         try {
             Scanner f = new Scanner(file);
             while (f.hasNextLine()) {
+                if (lineas == 0) {
+                    String line = f.nextLine();
+                }
+                lineas++;
                 String line = f.nextLine();
-                line = line.replaceAll("%\"%\"%","");
+                ArrayList<String> l = new ArrayList<String>();
                 String[] lineSp = line.split(",");
-                for (int i = 0; i < lineSp.length; i++) {
-                    if (consolas.isEmpty()){
-                        consolas.add(lineSp[2]);
-                    } else if (!consolas.contains(lineSp[2])){
-                        consolas.add(lineSp[2]);
+                String paste = "";
+                boolean start = false;
+                for (String field : lineSp) {
+                    if (start) {
+                        paste = paste + field;
+                        if (!field.equals("") && Character.toString(field.charAt(field.length() - 1)).equalsIgnoreCase("\"")) {
+                            start = false;
+                            l.add(paste);
+                            paste = "";
+                        }
+                    } else {
+                        if (!field.equals("") && !Character.toString(field.charAt(field.length() - 1)).
+                                equalsIgnoreCase("\"") &&
+                                Character.toString(field.charAt(0)).equalsIgnoreCase("\"")) {
+                            start = true;
+                            paste = field;
+                        } else {
+                            l.add(field);
+                        }
                     }
                 }
+                if (consolas.isEmpty()) {
+                    consolas.add(l.get(2));
+                } else if (!consolas.contains(l.get(2))) {
+                    consolas.add(l.get(2));
+                }
+                System.out.println(consolas.toString());
             }
-            System.out.println(consolas.toString());
-        } catch (FileNotFoundException e) {
+        } catch (
+                FileNotFoundException e) {
             System.out.println("!!!RUTA DE FICHERO ERRONEA!!!");
         }
-        return  consolas;
+        return consolas;
     }
 
     public static void main(String[] args) {
