@@ -1,5 +1,6 @@
 package ejercicio1;
 
+import javax.sound.sampled.Port;
 import java.util.ArrayList;
 
 public class Ejercicio1 {
@@ -72,15 +73,18 @@ public class Ejercicio1 {
         while (vivos.size() != 1 && !vivos.isEmpty()) {
             int jvivos = vivos.size();
             Jugador portero = vivos.get(jugadorAleatorio(jvivos));
+            System.out.println("PORTERO: (" + portero.getVidas() + ") " + portero.getNombre());
             Jugador disparador = vivos.get(jugadorAleatorio(jvivos));
+            System.out.println("DISPARADOR: (" + portero.getVidas() + ") " + portero.getNombre());
+            System.out.println("");
             if (portero.getCalidad() < disparador.getPotenca()) {
-                if (portero.getVidas() > 0) {
+                if (portero.getVidas() > 1) {
                     portero.setVidas(portero.getVidas() - 1);
                 } else {
                     vivos.remove(portero);
                 }
             } else {
-                if (disparador.getVidas() > 0) {
+                if (disparador.getVidas() > 1) {
                     disparador.setVidas(disparador.getVidas() - 1);
                 } else {
                     vivos.remove(disparador);
