@@ -30,30 +30,36 @@ public class Ejercicio2 {
                 String[] lineSp = line.split(" ");
                 for (int i = 0; i < lineSp.length; i++) {
                     if (lineSp[i] != " ") {
-                        System.out.println(lineSp[i]);
-                        if (lineSp[i].length() > longitud) {
+                        if (lineSp[i].length() >= longitud) {
+//                            System.out.print(lineSp[i] + ", "); //Revisamos si funciona el bucle y las condiciones.
                             contador++;
                         }
                     }
                 }
-                System.out.println(contador);
+//                System.out.println("contador); //Revisamos si funciona el contador
             }
         } catch (FileNotFoundException e) {
-            System.out.println("RUTA DE FICHERO ERRONEA");
+            System.out.println("!!!RUTA DE FICHERO ERRONEA!!!");
         }
-        return 0;
+        return contador;
     }
 
     public static void main(String[] args) {
+        System.out.println("******************************");
+        System.out.println("*        EJERCICIO 2         *");
+        System.out.println("******************************");
         Scanner input = new Scanner(System.in);
-        System.out.println("INGRESA RUTA COMPLETA DEL ARCHIVO TXT: ");
+        System.out.println("INGRESA LA RUTA COMPLETA DEL ARCHIVO TXT: ");
         String ruta = input.nextLine();
+        System.out.println("");
         System.out.println("INGRESAR LONGITUD A COMPARAR");
         try {
             int longitud = input.nextInt();
-            palabrasMasLargasQue(longitud, ruta);
+            System.out.println("");
+            int total = palabrasMasLargasQue(longitud, ruta);
+            System.out.println("HAY " + total + " PALABRAS CON " + longitud + " O MAS CARACTERES");
         } catch (Exception e) {
-            System.out.println("ERROR NUMERO NO VALIDO");
+            System.out.println("!!!ERROR NUMERO NO VALIDO!!");
         }
     }
 }
