@@ -16,11 +16,17 @@ public class Ejercicio1 {
      */
 
 
-    public static int potenciaDisparo() { return (int) (Math.random() * (99 - 50) + 50);}
+    public static int potenciaDisparo() {
+        return (int) (Math.random() * (99 - 50) + 50);
+    }
 
-    public static int calidadPorteria() { return (int) (Math.random() * (99 - 50) + 50);}
+    public static int calidadPorteria() {
+        return (int) (Math.random() * (99 - 50) + 50);
+    }
 
-    public static int generarDorsal() {return (int) (Math.random() * 99);}
+    public static int generarDorsal() {
+        return (int) (Math.random() * 99) + 1 ;
+    }
 
     public static String generarJugador() {
         String nombres[] = {"Enzo", "Oliver", "Alejandro", "Alvaro", "Manuel",
@@ -35,14 +41,26 @@ public class Ejercicio1 {
         return n;
     }
 
+    public static ArrayList<Jugador> creacionJugadores(ArrayList<Jugador> array) {
+        for (int i = 0; i < 11; i++) {
+            Jugador jugador = new Jugador(generarJugador(), generarDorsal(), potenciaDisparo(), calidadPorteria());
+            array.add(jugador);
+        }
+        return array;
+    }
+
+
     public static void main(String[] args) {
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-        for(int i = 0; i < 11; i++){
-            Jugador jugador = new Jugador(generarJugador(),generarDorsal(),potenciaDisparo(),calidadPorteria());
-            jugadores.add(jugador);
-        }
+        creacionJugadores(jugadores);
+        System.out.println("ESTOS SON LOS JUGADORES\n");
         for(int j = 0; j < jugadores.size(); j ++) {
-            System.out.println(jugadores.get(j).toString());
+            System.out.print(jugadores.get(j).getNombre() + "(" + jugadores.get(j).getDorsal() + ")" + " ");
         }
+        System.out.println("\n");
+        System.out.println("***************************");
+        System.out.println("*    COMIENZA EL JUEGO    *");
+        System.out.println("***************************\n");
+
     }
 }
