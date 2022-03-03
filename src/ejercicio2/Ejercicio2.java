@@ -13,6 +13,7 @@ public class Ejercicio2 {
      * indicando el número de palabras del texto cuya longitud es mayor
      * o igual que [longitud].
      */
+
     public static int palabrasMasLargasQue(int longitud, String ruta) {
         File file = new File(ruta);
         int contador = 0;
@@ -49,7 +50,7 @@ public class Ejercicio2 {
         System.out.println("*        EJERCICIO 2         *");
         System.out.println("******************************");
         Scanner input = new Scanner(System.in);
-        System.out.println("INGRESA LA RUTA COMPLETA DEL ARCHIVO TXT: ");
+        System.out.println("INGRESA LA RUTA COMPLETA DEL FICHERO TXT: ");
         String ruta = input.nextLine();
         System.out.println("");
         System.out.println("INGRESAR LONGITUD A COMPARAR");
