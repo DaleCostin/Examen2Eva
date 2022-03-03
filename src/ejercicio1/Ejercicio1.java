@@ -36,10 +36,13 @@ public class Ejercicio1 {
     }
 
     public static void main(String[] args) {
-        ArrayList<String> jugadores = new ArrayList<String>();
+        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         for(int i = 0; i < 11; i++){
             Jugador jugador = new Jugador(generarJugador(),generarDorsal(),potenciaDisparo(),calidadPorteria());
-            System.out.println(jugador.toString());
+            jugadores.add(jugador);
+        }
+        for(int j = 0; j < jugadores.size(); j ++) {
+            System.out.println(jugadores.get(j).toString());
         }
     }
 }
