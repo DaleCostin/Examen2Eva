@@ -1,6 +1,7 @@
 package ejercicio3;
 
 
+import javax.security.auth.login.AccountLockedException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -56,7 +57,6 @@ public class Ejercicio3 {
                 } else if (!consolas.contains(l.get(2))) {
                     consolas.add(l.get(2));
                 }
-                System.out.println(consolas.toString());
             }
         } catch (
                 FileNotFoundException e) {
@@ -72,8 +72,9 @@ public class Ejercicio3 {
         Scanner input = new Scanner(System.in);
         System.out.println("INGRESA LA RUTA COMPLETA DEL FICHERO CSV ");
         String ruta = input.nextLine();
-        System.out.println("");
         ArrayList<String> consola = informacionVideojuegos(ruta);
+        System.out.println("\nESTAS SON TODAS LAS CONSOLAS:");
+        System.out.println(consola.toString());
 
     }
 }
