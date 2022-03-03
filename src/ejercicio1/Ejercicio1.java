@@ -1,5 +1,7 @@
 package ejercicio1;
 
+import java.util.ArrayList;
+
 public class Ejercicio1 {
 
     /**
@@ -12,7 +14,32 @@ public class Ejercicio1 {
      * del disparo, el jugador que ha chutado a portería pasa a ser el portero en el siguiente
      * turno. El juego acaba cuando sólo queda un jugador vivo.
      */
-    public static void main(String[] args) {
 
+
+    public static int potenciaDisparo() { return (int) (Math.random() * (99 - 50) + 50);}
+
+    public static int calidadPorteria() { return (int) (Math.random() * (99 - 50) + 50);}
+
+    public static int generarDorsal() {return (int) (Math.random() * 99);}
+
+    public static String generarJugador() {
+        String nombres[] = {"Enzo", "Oliver", "Alejandro", "Alvaro", "Manuel",
+                "Julen", "Aaron", "Alberto", "Alexander", "Mikhail", "Nikolai",
+                "Dimitri", "Bacari", "Boubacar", "Igor", "Eros", "Kowalski"};
+        String apellidos[] = {"Sanchez", "Urriega", "Alvarez", "Dieguez", "Rodriguez",
+                "Ivainov", "Socolov", "Popov", "Vasiliev", "Pablov", "Jordano",
+                "Bianci", "Amatto", "Vitale", "Umbunde", "Adebayo", "Adeleke"};
+        String n = "";
+        n = n + nombres[(int) (Math.random() * (nombres.length))] +
+                " " + apellidos[(int) (Math.random() * (apellidos.length))];
+        return n;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> jugadores = new ArrayList<String>();
+        for(int i = 0; i < 11; i++){
+            Jugador jugador = new Jugador(generarJugador(),generarDorsal(),potenciaDisparo(),calidadPorteria());
+            System.out.println(jugador.toString());
+        }
     }
 }

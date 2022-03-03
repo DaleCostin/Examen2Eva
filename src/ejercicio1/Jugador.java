@@ -19,14 +19,14 @@ public class Jugador {
     private int dorsal;
     private int potencia;
     private int calidad;
-    private int vidas = 2;
+    private int vidas;
 
-    public Jugador(String nombre, int dorsal, int potencia, int calidad, int vidas) {
+    public Jugador(String nombre, int dorsal, int potencia , int calidad) {
         this.nombre = nombre;
         this.dorsal = dorsal;
         this.potencia = potencia;
         this.calidad = calidad;
-        this.vidas = vidas;
+        this.vidas = 2;
     }
 
     public String getNombre() {
@@ -58,8 +58,9 @@ public class Jugador {
     }
 
     public void setCalidad(int calidad) {
-        this.calidad= calidad;
+        this.calidad = calidad;
     }
+
     public int getVidas() {
         return vidas;
     }
@@ -68,11 +69,11 @@ public class Jugador {
         this.vidas = vidas;
     }
 
-    private void potenciaDisparo(int potencia) {
-
-    }
-
-    private void habilidadPorteria(int habilidad) {
-
+    @Override
+    public String toString() {
+        return "Jugador -> [nombre = " + nombre +
+                ", dorsal = " + dorsal + ", potencia = " + potencia +
+                ", calidad = " + calidad + ", vidas = " +
+                vidas + "]";
     }
 }
